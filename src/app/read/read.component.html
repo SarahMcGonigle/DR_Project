@@ -1,1 +1,18 @@
-<p>read works!</p>
+<mat-accordion *ngFor="let grocery of Mygrocerys">
+    <mat-expansion-panel [expanded]="true" >
+    <mat-expansion-panel-header>
+    <mat-panel-title>
+    <h3> {{ grocery.title }} </h3>
+    </mat-panel-title>
+    <mat-panel-description>
+    <h3>{{ grocery.year }}</h3>
+    </mat-panel-description>
+    </mat-expansion-panel-header>
+    <img src="{{grocery.poster}}">
+    <mat-action-row>
+  <button mat-button [routerLink]="['/edit', grocery._id]" color="primary">EDIT</button>
+    
+    <button mat-button (click)="onDelete(grocery._id)" color="warn">DELETE</button>
+    </mat-action-row>
+    </mat-expansion-panel>
+    </mat-accordion>

@@ -12,13 +12,13 @@ mongoose.connect(mongoDB, {useNewUrlParser:true});
 
 const Schema = mongoose.Schema;
 
-const movieSchema = new Schema({
-  title:String,
-  year:String,
-  poster:String
+const grocerySchema = new Schema({
+  name:String,
+  price:String,
+  category:String
 });
 
-const MovieModel = mongoose.model('movie',movieSchema);
+const GroceryModel = mongoose.model('grocery',grocerySchema);
 
 app.use(cors());
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -37,18 +37,18 @@ app.get('/', (req, res) => {
   res.send('hello world');
 })
 
-app.get('/api/movies', (req,res,next) => {
+app.get('/api/groceries', (req,res,next) => {
 
   console.log("get request")
-  MovieModel.find((err,data)=>{
-    res.json({movies:data});
+  GroceryModel.find((err,data)=>{
+    res.json({groceries:data});
   })
 })
 
-app.delete('/api/movies/:id', (req,res) =>{
+app.delete('/api/groceries/:id', (req,res) =>{
   console.log(req.params.id);
 
-  MovieModel.deleteOne({_id:req.params.id},(error,data)=>{
+  GroceryModel.deleteOne({_id:req.params.id},(error,data)=>{
     if(error)
       res.json(error);
      
@@ -56,37 +56,37 @@ app.delete('/api/movies/:id', (req,res) =>{
   })
 })
 
-app.post('/api/movies', (req,res) =>{
+app.post('/api/groceries', (req,res) =>{
 console.log('post Sucessfull');
 console.log(req.body)
 console.log(req.body.title);
 console.log(req.body.year);
 console.log(req.body.poster);
 
-MovieModel.create({
-  title: req.body.title,
-  year: req.body.year,
-  poster: req.body.poster
+GroceryModel.create({
+  name: req.body.title,
+  price: req.body.year,
+  category: req.body.poster
 });
 res.json('data uploaded')
 
 
 })
 
-app.get('/api/movies/:id',(req,res)=>{
+app.get('/api/groceries/:id',(req,res)=>{
   console.log(req.params.id);
 
-  MovieModel.findById(req.params.id, (err, data)=>{
+  GroceryModel.findById(req.params.id, (err, data)=>{
     res.json(data);
   })
 })
 
 
-app.put('/api/movies/:id', (req, res)=>{
+app.put('/api/groceries/:id', (req, res)=>{
   console.log(req.body);
   console.log("Edit "+req.params.id);
 
-  MovieModel.findByIdAndUpdate(req.params.id,
+  GroceryModel.findByIdAndUpdate(req.params.id,
     req.body, {new:true}, (error, data)=>{
       res.send(data);
     })
