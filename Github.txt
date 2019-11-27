@@ -1,6 +1,6 @@
 echo "# DR_Project" >> README.md
 git init
 git add .
-git commit -m "components created"
+git commit -m "4th commit, App running"
 git remote add origin https://github.com/SarahMcGonigle/DR_Project.git
 git push -u origin master
