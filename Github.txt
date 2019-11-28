@@ -1,6 +1,6 @@
 
 git init
 git add .
-git commit -m "ALL WORKING"
+git commit -m "Amount Added"
 git remote add origin https://github.com/SarahMcGonigle/DR_Project.git
 git push -u origin master

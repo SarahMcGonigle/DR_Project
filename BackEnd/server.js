@@ -15,7 +15,8 @@ const Schema = mongoose.Schema;
 const grocerySchema = new Schema({
   name:String,
   price:String,
-  category:String
+  category:String,
+  amount:String
 });
 
 const GroceryModel = mongoose.model('grocery',grocerySchema);
@@ -79,12 +80,14 @@ console.log(req.body)
 console.log(req.body.name);
 console.log(req.body.price);
 console.log(req.body.cateory);
+console.log(req.body.amount);
 
 
 GroceryModel.create({
   name: req.body.name,
   price: req.body.price,
-  category: req.body.category
+  category: req.body.category,
+  amount: req.body.amount
 
 });
 res.json('data uploaded')

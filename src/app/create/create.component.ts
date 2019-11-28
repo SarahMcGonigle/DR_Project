@@ -14,7 +14,7 @@ export class CreateComponent implements OnInit {
 
   ngOnInit() {
   }
-  myDate : Date;
+  
   onAddGrocery(form: NgForm) {
     
     if(!form.valid)
@@ -23,12 +23,9 @@ export class CreateComponent implements OnInit {
     }
 
     console.log(form.value);
-    console.log(form.value.date);
-    this.myDate = new Date(form.value.date);
-    console.log(this.myDate);
 
     this.groceryService.AddGroceryInformation(form.value.name,
-      form.value.price, form.value.category).subscribe(
+      form.value.price, form.value.category, form.value.amount).subscribe(
         ()=>{
           //do something after out operation has finished
         }

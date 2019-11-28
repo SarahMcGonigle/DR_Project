@@ -25,6 +25,6 @@ grocery:any=[];
   onEditGrocery(form:NgForm){
     console.log(form.value.name);
     this.groceryService.UpdateGrocery(this.grocery._id, form.value.name,
-      form.value.price, form.value.category).subscribe();
+      form.value.price, form.value.category, form.value.amount).subscribe();
   }
 }

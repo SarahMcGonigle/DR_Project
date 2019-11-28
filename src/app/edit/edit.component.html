@@ -24,7 +24,17 @@
         <textarea
           matInput
          rows="4"
-          name="Category"
+          name="category"
+          ngModel={{grocery.category}}
+          required
+          #content="ngModel"></textarea>
+      </mat-form-field>
+      <mat-form-field>
+          <label>Amount</label>
+        <textarea
+          matInput
+         rows="4"
+          name="amount"
           ngModel={{grocery.category}}
           required
           #content="ngModel"></textarea>

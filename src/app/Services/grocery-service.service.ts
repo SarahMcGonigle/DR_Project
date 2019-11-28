@@ -14,8 +14,8 @@ export class GroceryServiceService {
     return this.http.get('http://localhost:4000/api/Groceries');
   }
 
-  AddGroceryInformation(name:String,price:String,category:String):Observable<any>{
-    const grocery:Grocery = {name:name, price:price, category:category};
+  AddGroceryInformation(name:String,price:String,category:String,amount:String):Observable<any>{
+    const grocery:Grocery = {name:name, price:price, category:category, amount:amount};
     return this.http.post('http://localhost:4000/api/Groceries', grocery)
   }
 
@@ -27,8 +27,8 @@ export class GroceryServiceService {
     return this.http.get('http://localhost:4000/api/Groceries/'+id);
   }
 
-  UpdateGrocery(id:String,name:String, price:String, category:String):Observable<any>{
-    const grocery:Grocery = {name:name, price:price, category:category};
+  UpdateGrocery(id:String,name:String, price:String, category:String, amount:String):Observable<any>{
+    const grocery:Grocery = {name:name, price:price, category:category, amount:amount};
     console.log("Edit"+id);
     return this.http.put('http://localhost:4000/api/Groceries/'+id, grocery);
   }
