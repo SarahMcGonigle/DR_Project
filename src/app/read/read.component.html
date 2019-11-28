@@ -1,14 +1,14 @@
-<mat-accordion *ngFor="let grocery of Mygrocerys">
+<mat-accordion *ngFor="let grocery of MyGroceries">
     <mat-expansion-panel [expanded]="true" >
     <mat-expansion-panel-header>
     <mat-panel-title>
-    <h3> {{ grocery.title }} </h3>
+    <h3> {{ grocery.name }} </h3>
     </mat-panel-title>
     <mat-panel-description>
-    <h3>{{ grocery.year }}</h3>
+    <h3>{{ grocery.price }}</h3>
     </mat-panel-description>
     </mat-expansion-panel-header>
-    <img src="{{grocery.poster}}">
+    <img src="{{grocery.category}}">
     <mat-action-row>
   <button mat-button [routerLink]="['/edit', grocery._id]" color="primary">EDIT</button>
     

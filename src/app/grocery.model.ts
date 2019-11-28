@@ -1,5 +1,5 @@
 export interface Grocery {
-    name: string;
-    price: string;
-    category: string;
+    name: String;
+    price: String;
+    category: String;
   }

@@ -7,7 +7,7 @@ const PORT = 4000;
 const cors = require('cors');
 const mongoose = require('mongoose');
 
-const mongoDB ='mongodb+srv://admin:admin@cluster0-ku2kj.mongodb.net/test?retryWrites=true&w=majority';
+const mongoDB ='mongodb+srv://admin:admin@cluster0-ku2kj.mongodb.net/grocery?retryWrites=true&w=majority';
 mongoose.connect(mongoDB, {useNewUrlParser:true});
 
 const Schema = mongoose.Schema;
@@ -37,6 +37,17 @@ app.get('/', (req, res) => {
   res.send('hello world');
 })
 
+app.put('/api/groceries/:id', (req, res)=>{
+  console.log(req.body);
+  console.log("Edit "+req.params.id);
+
+  GroceryModel.findByIdAndUpdate(req.params.id,
+    req.body, {new:true}, (error, data)=>{
+      res.send(data);
+    })
+})
+
+
 app.get('/api/groceries', (req,res,next) => {
 
   console.log("get request")
@@ -44,6 +55,9 @@ app.get('/api/groceries', (req,res,next) => {
     res.json({groceries:data});
   })
 })
+
+
+
 
 app.delete('/api/groceries/:id', (req,res) =>{
   console.log(req.params.id);
@@ -56,20 +70,24 @@ app.delete('/api/groceries/:id', (req,res) =>{
   })
 })
 
+
+
+
 app.post('/api/groceries', (req,res) =>{
 console.log('post Sucessfull');
 console.log(req.body)
-console.log(req.body.title);
-console.log(req.body.year);
-console.log(req.body.poster);
+console.log(req.body.name);
+console.log(req.body.price);
+console.log(req.body.cateory);
+
 
 GroceryModel.create({
-  name: req.body.title,
-  price: req.body.year,
-  category: req.body.poster
+  name: req.body.name,
+  price: req.body.price,
+  category: req.body.category
+
 });
 res.json('data uploaded')
-
 
 })
 
@@ -82,16 +100,6 @@ app.get('/api/groceries/:id',(req,res)=>{
 })
 
 
-app.put('/api/groceries/:id', (req, res)=>{
-  console.log(req.body);
-  console.log("Edit "+req.params.id);
 
-  GroceryModel.findByIdAndUpdate(req.params.id,
-    req.body, {new:true}, (error, data)=>{
-      res.send(data);
-    })
-})
-
-app.listen(PORT, function () {
-  console.log('Server is running on Port: ', PORT);
-});
+app.listen(PORT, () => 
+console.log(`Example app listening on port ${PORT}!`))

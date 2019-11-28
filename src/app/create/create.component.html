@@ -1,11 +1,11 @@
 <mat-card>
-    <form (submit)="onAddgrocery(groceryForm)" #groceryForm="ngForm">
+    <form (submit)="onAddGrocery(groceryForm)" #groceryForm="ngForm">
       <mat-form-field>
-          <label> Grocery Title</label>
+          <label> Grocery Name</label>
         <input
           matInput
           type="text"
-          name="title"
+          name="name"
           ngModel
           required
           #title="ngModel">
@@ -14,7 +14,7 @@
           <label>Grocery Price</label>
         <textarea
           matInput
-          name="year"
+          name="price"
           ngModel
           required
           #content="ngModel"></textarea>
@@ -24,7 +24,7 @@
         <textarea
           matInput
          rows="4"
-          name="poster"
+          name="category"
           ngModel
           required
           #content="ngModel"></textarea>

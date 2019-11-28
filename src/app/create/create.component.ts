@@ -15,7 +15,7 @@ export class CreateComponent implements OnInit {
   ngOnInit() {
   }
   myDate : Date;
-  onAddgrocery(form: NgForm) {
+  onAddGrocery(form: NgForm) {
     
     if(!form.valid)
     {
